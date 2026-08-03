@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ムロ番くじ | Webくじ</title>
+
+    <meta name="description" content="HTML・CSS・JavaScriptで制作したオリジナルWebおみくじサイト『ムロ番くじ』です。">
+
+<link rel="icon" type="image/png" href="images/favicon.png?v=2">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <img src="images/logo.png" id="logo" alt="ムロ番くじロゴ">
+
+        <p id="remaining">
+            残り 60 / 60
+        </p>
+
+        <div id="prizeCount"></div>
+        
+
+      <img
+    src="images/box.png"
+    id="box"
+    alt="くじ箱">
+
+<div class="buttonRow">
+    <button id="drawButton">🎲 引く</button>
+    <button id="draw10Button">🎁 10回引く</button>
+</div>
+
+ <div class="buttonRow">
+    <button id="darkButton">🌙 ダークモード</button>
+    <button id="resetButton">🔄 リセット</button>
+</div>
+
+        <div id="result"></div>
+        
+        <h2>🎁 引いた履歴</h2>
+
+<div id="history"></div>
+
+        <div id="modal" class="hidden">
+
+    <div class="modalContent">
+
+        <div id="modalResult"></div>
+
+        <div id="specialEffect" class="hidden">
+
+           <div id="specialMessage"></div>
+
+        </div>
+        
+    </div>
+
+</div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

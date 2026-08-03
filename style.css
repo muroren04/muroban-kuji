@@ -1,0 +1,1153 @@
+body {
+
+    margin:0;
+
+    font-family:sans-serif;
+
+    background-image:url("images/background.png");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+    background:rgba(255,255,255,.92);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+#remaining {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+#box {
+    margin: 20px 0;
+}
+
+button{
+
+    padding:16px 45px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:40px;
+
+    cursor:pointer;
+
+    background:linear-gradient(135deg,#00AEEF,#4FD3FF);
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+
+}
+
+#result {
+    margin-top: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+@keyframes zoom {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+.zoom {
+
+    animation: zoom 0.5s infinite;
+
+}
+.prizeImage{
+
+    width:250px;
+
+    margin-top:20px;
+
+    border-radius:20px;
+
+    animation:showPrize 0.8s;
+
+}
+
+@keyframes showPrize{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(0.6);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+/* 箱を揺らす */
+
+@keyframes shake {
+
+    0%{
+        transform:rotate(0deg);
+    }
+
+    20%{
+        transform:rotate(-5deg);
+    }
+
+    40%{
+        transform:rotate(5deg);
+    }
+
+    60%{
+        transform:rotate(-5deg);
+    }
+
+    80%{
+        transform:rotate(5deg);
+    }
+
+    100%{
+        transform:rotate(0deg);
+    }
+
+}
+
+.shake{
+
+    animation:shake .15s infinite;
+
+}
+
+/* 光る */
+
+.flash{
+
+    filter:drop-shadow(0 0 35px gold);
+
+}
+
+/* 箱 */
+
+#box{
+
+    width:240px;
+
+    transition:.3s;
+
+}
+/* =========================
+   賞ごとの背景色
+========================= */
+
+.gold{
+    background: linear-gradient(135deg,#FFD700,#FFF5B8);
+    color:#333;
+}
+.blue{
+    background: linear-gradient(135deg,#4FACFE,#00F2FE);
+}
+
+.green{
+    background: linear-gradient(135deg,#43E97B,#38F9D7);
+}
+
+.purple{
+    background: linear-gradient(135deg,#9D50BB,#6E48AA);
+}
+
+.orange{
+    background: linear-gradient(135deg,#F6D365,#FDA085);
+}
+
+.gray{
+    background: linear-gradient(135deg,#E0E0E0,#BDBDBD);
+}
+
+.resultCard{
+
+    margin-top:25px;
+    padding:25px;
+    border-radius:20px;
+    color:white;
+    animation:showPrize .8s;
+
+}
+
+.resultCard h2{
+
+    font-size:50px;
+
+    margin:10px 0;
+
+    position:relative;
+
+    z-index:2;
+
+    letter-spacing:3px;
+
+    text-shadow:
+    3px 3px 0 rgba(0,0,0,.3),
+    0 0 15px white;
+
+}
+
+.resultCard p{
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    position:relative;
+
+    z-index:2;
+
+    background:rgba(255,255,255,.25);
+
+    padding:10px 20px;
+
+    border-radius:15px;
+
+    display:inline-block;
+
+    text-shadow:
+    2px 2px 4px rgba(0,0,0,.4);
+
+}
+
+/* =========================
+   モーダル
+========================= */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+#modal{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.7);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:999;
+
+}
+
+.modalContent{
+    width:700px;
+    max-width:90vw;
+    max-height:85vh;
+    overflow-y:auto;
+
+    background:white;
+    padding:30px;
+    border-radius:20px;
+
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+#closeButton{
+
+    margin-top:25px;
+
+    padding:12px 35px;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    border:none;
+
+    border-radius:10px;
+
+}
+
+/* =========================
+   背景フラッシュ
+========================= */
+
+body.flashBackground{
+
+    animation:flashBackground .8s;
+
+}
+
+@keyframes flashBackground{
+
+    0%{
+
+        background:#f3f6fb;
+
+    }
+
+    30%{
+
+        background:#fff7a8;
+
+    }
+
+    60%{
+
+        background:#ffe66d;
+
+    }
+
+    100%{
+
+        background:#f3f6fb;
+
+    }
+
+}
+
+/* =========================
+   紙吹雪
+========================= */
+
+.confetti{
+
+    position:fixed;
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:2px;
+
+    top:-20px;
+
+    z-index:9999;
+
+    animation:fall 3s linear forwards;
+
+}
+
+@keyframes fall{
+
+    from{
+
+        transform:translateY(0) rotate(0deg);
+
+    }
+
+    to{
+
+        transform:translateY(110vh) rotate(720deg);
+
+    }
+
+}
+
+/* =========================
+   ロゴ
+========================= */
+
+#logo{
+
+    width:340px;
+
+    max-width:95%;
+
+    margin-bottom:20px;
+
+}
+
+/* =========================
+   リセットボタン
+========================= */
+
+#resetButton{
+
+    margin-top:15px;
+
+    background:linear-gradient(135deg,#ff8a00,#ff5252);
+
+}
+
+#resetButton:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* =========================
+   賞の残数
+========================= */
+
+#prizeCount{
+
+    margin:20px auto;
+
+    text-align:left;
+
+    background:white;
+
+    padding:15px;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+
+}
+
+/* =========================
+   引いた履歴
+========================= */
+
+#history{
+
+    margin-top:20px;
+
+    text-align:left;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:15px;
+
+    max-height:250px;
+
+    overflow-y:auto;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.15);
+
+}
+
+.historyItem{
+
+    padding:8px 0;
+
+    border-bottom:1px solid #ddd;
+
+    font-size:18px;
+
+}
+
+.historyItem:last-child{
+
+    border-bottom:none;
+
+}
+
+/* =========================
+   特別演出
+========================= */
+
+#specialEffect{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:rgba(0,0,0,.85);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:99999;
+
+    animation:fadeIn .4s;
+
+    pointer-events:none;
+
+}
+
+#specialMessage{
+
+    text-align:center;
+
+    color:white;
+
+    animation:pop 0.8s;
+
+}
+
+#specialMessage h1{
+
+    font-size:70px;
+
+    margin:10px;
+
+}
+
+#specialMessage h2{
+
+    font-size:45px;
+
+}
+
+#specialMessage p{
+
+    font-size:24px;
+
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.3);
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+#specialMessage h1{
+
+    color:#FFD700;
+
+    text-shadow:
+    0 0 15px gold,
+    0 0 30px gold,
+    0 0 50px gold;
+
+}
+
+#specialMessage h2{
+
+    color:white;
+
+    text-shadow:
+    0 0 10px #00FFFF,
+    0 0 25px #00FFFF;
+
+}
+
+#specialMessage p{
+
+    color:#FFF;
+
+}
+
+/* =========================
+   結果画面 豪華化
+========================= */
+
+.resultCard{
+
+    position:relative;
+    overflow:hidden;
+
+    border:5px solid rgba(255,255,255,.8);
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,.8),
+    0 10px 30px rgba(0,0,0,.3);
+
+}
+
+
+/* キラキラ演出 */
+.resultCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:-50%;
+    left:-50%;
+
+    width:200%;
+    height:200%;
+
+    background:
+    linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,.6),
+        transparent
+    );
+
+    transform:rotate(30deg);
+
+    animation:shine 2.5s infinite;
+
+}
+
+
+@keyframes shine{
+
+    0%{
+
+        transform:translateX(-100%) rotate(30deg);
+
+    }
+
+    100%{
+
+        transform:translateX(100%) rotate(30deg);
+
+    }
+
+}
+
+/* A賞 特別仕様 */
+
+.resultCard.gold{
+
+    border:6px solid #fff;
+
+    box-shadow:
+    0 0 30px gold,
+    0 0 60px rgba(255,215,0,.7);
+
+}
+
+
+.resultCard.gold h2{
+
+    color:#8b0000;
+
+    font-size:60px;
+
+}
+
+
+.resultCard.gold p{
+
+    color:#222;
+
+}
+
+/* =========================
+   ラストワン賞 特別演出
+========================= */
+
+.resultCard.last{
+
+    background:
+    linear-gradient(135deg,#111,#444,#111);
+
+    border:6px solid #FFD700;
+
+    box-shadow:
+    0 0 30px gold,
+    0 0 70px rgba(255,215,0,.8);
+
+    animation:
+    lastOnePop .8s,
+    lastGlow 1.5s infinite alternate;
+
+}
+
+
+.resultCard.last h2{
+
+    color:#FFD700;
+
+    font-size:65px;
+
+    letter-spacing:5px;
+
+    text-shadow:
+    3px 3px 0 #000,
+    0 0 20px gold,
+    0 0 40px gold;
+
+}
+
+
+.resultCard.last p{
+
+    color:white;
+
+    font-size:30px;
+
+    background:rgba(0,0,0,.5);
+
+    padding:12px 25px;
+
+    border-radius:15px;
+
+}
+
+
+@keyframes lastOnePop{
+
+    from{
+
+        transform:scale(.5);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+@keyframes lastGlow{
+
+    from{
+
+        box-shadow:
+        0 0 20px gold;
+
+    }
+
+    to{
+
+        box-shadow:
+        0 0 60px gold;
+
+    }
+
+}
+
+.lastImage{
+
+    width:250px;
+
+    border-radius:20px;
+
+    margin-bottom:20px;
+
+    animation:showPrize .8s;
+
+}
+
+/* =========================
+   ラストワン画面揺れ
+========================= */
+
+.lastShake{
+
+    animation:lastShake .5s;
+
+}
+
+
+@keyframes lastShake{
+
+    0%{
+        transform:translateX(0);
+    }
+
+    20%{
+        transform:translateX(-15px);
+    }
+
+    40%{
+        transform:translateX(15px);
+    }
+
+    60%{
+        transform:translateX(-10px);
+    }
+
+    80%{
+        transform:translateX(10px);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+
+}
+
+#prizeCount{
+    font-size:16px;
+    line-height:1.5;
+}
+
+/* =========================
+   ダークモード
+========================= */
+
+body.dark{
+
+    background:#121212;
+
+}
+
+
+body.dark .container{
+
+    background:rgba(30,30,30,.95);
+
+    color:white;
+
+}
+
+
+body.dark h1{
+
+    color:white;
+
+}
+
+
+body.dark #prizeCount,
+body.dark #history{
+
+    background:#222;
+
+    color:white;
+
+}
+
+
+body.dark .historyItem{
+
+    border-color:#555;
+
+}
+
+.buttonRow{
+
+    display:flex;
+
+    gap:12px;
+
+    justify-content:center;
+
+    margin-top:15px;
+
+}
+
+.buttonRow button{
+
+    flex:1;
+
+    max-width:220px;
+
+}
+
+#drawButton{
+
+    background:linear-gradient(135deg,#00AEEF,#4FD3FF);
+
+}
+
+#draw10Button{
+
+    background:linear-gradient(135deg,#9C27B0,#BA68C8);
+
+}
+
+#darkButton{
+
+    background:linear-gradient(135deg,#444,#222);
+
+}
+
+#resetButton{
+
+    background:linear-gradient(135deg,#ff8a00,#ff5252);
+
+}
+
+.tenGrid{
+    display:grid;
+    grid-template-columns:repeat(5,90px);
+    justify-content:center;
+    gap:10px;
+}
+.tenItem{
+    width:90px;
+    background:#f5f5f5;
+    border-radius:15px;
+    padding:8px;
+    text-align:center;
+    box-sizing:border-box;
+}
+
+.tenItem img{
+    width:65px;
+    height:65px;
+    object-fit:contain;
+}
+
+.tenItem p{
+    margin:3px 0;
+    font-size:12px;
+    color:#222;
+    font-weight:bold;
+}
+
+/* =========================
+   10回引き 集計表示
+========================= */
+
+.summary{
+    margin:15px 0;
+    width:180px;
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    font-size:14px;
+    font-weight:bold;
+    text-align:left;
+}
+
+.summary div{
+    padding:3px 0;
+    color:#222;
+    display:grid;
+    grid-template-columns:100px 50px;
+    justify-content:start;
+}
+
+body.dark .summary div{
+    color:#222;
+}
+
+body.dark #modal h2{
+    color:#222;
+}
+
+.resultButtons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;   /* ← 追加 */
+    gap:12px;
+    margin-top:20px;
+}
+
+.resultButtons button{
+
+    width:100%;
+
+}
+
+.resultButtons button{
+    width:250px;
+    padding:12px 20px;
+    font-size:16px;
+    height:50px;
+    margin:5px 0;
+}
+
+.lastTenItem{
+
+    background:linear-gradient(135deg,#111,#444);
+
+    border:3px solid gold;
+
+    box-shadow:
+    0 0 15px gold;
+
+}
+
+
+.lastTenItem p{
+
+    color:#FFD700;
+
+    font-weight:bold;
+
+}
+
+.summary,
+.summary div{
+    border:none;
+    box-shadow:none;
+    outline:none;
+    background:none;
+}
+
+.summary{
+    border:none !important;
+    box-shadow:none !important;
+    outline:none !important;
+}
+
+.summary div{
+    border:none !important;
+    box-shadow:none !important;
+    outline:none !important;
+    background:none !important;
+}
+
+/* 10回引きリザルトを右へ移動 */
+.tenGrid{
+    transform:translateX(-5px);
+}
+
+.summary{
+    transform:translateX(-5px);
+}
+
+/* 10回引きリザルトボタンだけ右へ移動 */
+.resultButtons{
+    transform:translateX(70px);
+}
+
+.summary div{
+    display:grid !important;
+    grid-template-columns:120px 50px !important;
+    justify-content:start !important;
+    text-align:left !important;
+}
+
+/* =========================
+   スマホ表示
+========================= */
+
+@media(max-width:600px){
+
+    .container{
+        width:90%;
+        padding:20px;
+        margin:20px auto;
+    }
+
+    #logo{
+        width:260px;
+    }
+
+    #box{
+        width:180px;
+    }
+
+    button{
+        font-size:18px;
+        padding:14px 30px;
+    }
+
+    .buttonRow{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .buttonRow button{
+        width:250px;
+    }
+
+    #prizeCount,
+    #history{
+        font-size:14px;
+    }
+
+    .resultCard h2{
+        font-size:40px;
+    }
+
+    .resultCard p{
+        font-size:20px;
+    }
+
+    /* 10回引き */
+    .tenGrid{
+        grid-template-columns:repeat(2,90px);
+        justify-content:center;
+        transform:none;
+    }
+
+    .summary{
+        transform:none;
+        width:170px;
+    }
+
+    .resultButtons{
+        transform:none;
+    }
+
+}
