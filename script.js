@@ -459,6 +459,9 @@ document.getElementById("closeButton2")
 
     modal.classList.add("hidden");
 
+    console.log(isLastDraw);
+console.log("閉じるボタン");
+    
     if(isLastDraw){
 
         lastoneSound.currentTime = 0;
