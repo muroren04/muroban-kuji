@@ -403,7 +403,7 @@ if (isLastDraw) {
 
         }, 4000);
 
-    }, 1500);  
+    }, 1500);   // ←ここを変更
 }
 
 drawHistory.unshift(`${drawCount}回目　${prize}　${data.name}`);
