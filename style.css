@@ -1159,3 +1159,11 @@ body.dark #modal h2{
     }
 
 }
+
+@media screen and (max-width:600px){
+
+    .resultCard.last{
+        margin-bottom:40px;
+    }
+
+}
