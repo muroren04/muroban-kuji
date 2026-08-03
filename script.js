@@ -311,10 +311,6 @@ modalResult.innerHTML = `
 
     <p>${data.name}</p>
 
-    ${isLastDraw
-? "<h3>🎉 ラストワン賞獲得！おめでとうございます！</h3>"
-: ""}
-
 </div>
 
 
