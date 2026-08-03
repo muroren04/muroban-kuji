@@ -698,6 +698,17 @@ function showTenResult(results,summary){
 
 });
 
+html += `</div>`;
+
+html += `
+<div class="summary">
+
+<div><span>A賞</span><span>× ${summary["A賞"]}</span></div>
+<div><span>B賞</span><span>× ${summary["B賞"]}</span></div>
+<div><span>C賞</span><span>× ${summary["C賞"]}</span></div>
+...
+`;
+
 html += `
 <div class="summary">
 
