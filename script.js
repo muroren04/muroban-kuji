@@ -245,9 +245,11 @@ let prize;
 
 if(tickets.length===1){
 
+    prize = tickets[0];
+
     tickets.splice(0,1);
 
-    prize="LAST ONE賞";
+    lastOneAvailable = true;
 
 }else{
 
@@ -258,6 +260,8 @@ if(tickets.length===1){
     tickets.splice(randomIndex,1);
 
 }
+
+const isLastDraw = tickets.length === 0;
 
 const data=prizeData[prize];
 let cardClass = "";
@@ -296,6 +300,7 @@ switch(prize){
 
 }
 
+
 modalResult.innerHTML = `
 
 <div class="resultCard ${cardClass}">
@@ -306,9 +311,9 @@ modalResult.innerHTML = `
 
     <p>${data.name}</p>
 
-    ${prize === "LAST ONE賞"
-        ? "<h3>最後の1枚です！おめでとうございます！</h3>"
-        : ""}
+    ${isLastDraw
+? "<h3>🎉 ラストワン賞獲得！おめでとうございます！</h3>"
+: ""}
 
 </div>
 
@@ -368,7 +373,7 @@ if(prize==="A賞"){
 
 }
 
-if(prize==="LAST ONE賞"){
+if(isLastDraw){
 
     lastoneSound.currentTime=0;
     lastoneSound.play();
