@@ -41,10 +41,12 @@ const lastoneSound = new Audio("sounds/lastone.mp3");
 
 function updatePrizeCount(){
 
+    const total = 60;
+
     prizeCount.innerHTML=`
 
 🏆 A賞　残り ${tickets.filter(ticket=>ticket==="A賞").length}個
-(${((tickets.filter(ticket=>ticket==="A賞").length / tickets.length) * 100).toFixed(1)}%)
+(${((tickets.filter(ticket=>ticket==="A賞").length / total) * 100).toFixed(1)}%)
 
 <br>
 
@@ -240,8 +242,6 @@ openSound.play();
 
         box.classList.remove("zoom");
 let prize;
-
-let isLastOne = false;
 
 if(tickets.length===1){
 
