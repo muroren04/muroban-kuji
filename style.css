@@ -1068,11 +1068,11 @@ body.dark #modal h2{
 
 /* 10回引きリザルトを右へ移動 */
 .tenGrid{
-    transform:translateX(-5px);
+    transform:translateX(0px);
 }
 
 .summary{
-    transform:translateX(-5px);
+    transform:translateX(0px);
 }
 
 /* 10回引きリザルトボタンだけ右へ移動 */
