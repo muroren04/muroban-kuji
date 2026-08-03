@@ -159,7 +159,6 @@ const prizeData = {
 };
 
 let tickets = [];
-
 let lastOneAvailable = true;
 
 let drawHistory = [];
@@ -312,6 +311,10 @@ modalResult.innerHTML = `
 
     <p>${data.name}</p>
 
+    ${isLastDraw
+? "<h3>🎉 ラストワン賞獲得！おめでとうございます！</h3>"
+: ""}
+
 </div>
 
 
@@ -370,6 +373,39 @@ if(prize==="A賞"){
 
 }
 
+if (isLastDraw) {
+
+    setTimeout(function () {
+
+        lastoneSound.currentTime = 0;
+        lastoneSound.play();
+
+        createConfetti();
+
+        document.body.classList.add("flashBackground");
+
+        specialMessage.innerHTML = `
+            <img src="images/lastone.png" class="lastImage">
+
+            <h1>👑</h1>
+
+            <h2>ラストワン賞！！</h2>
+
+            <p>CONGRATULATIONS!</p>
+        `;
+
+        specialEffect.classList.remove("hidden");
+
+        setTimeout(function () {
+
+            specialEffect.classList.add("hidden");
+            document.body.classList.remove("flashBackground");
+
+        }, 4000);
+
+    }, 1500);  
+}
+
 drawHistory.unshift(`${drawCount}回目　${prize}　${data.name}`);
 
 history.innerHTML="";
@@ -423,36 +459,6 @@ document.getElementById("closeButton2")
 .addEventListener("click",function(){
 
     modal.classList.add("hidden");
-
-    console.log(isLastDraw);
-console.log("閉じるボタン");
-    
-    if(isLastDraw){
-
-        lastoneSound.currentTime = 0;
-        lastoneSound.play();
-
-        createConfetti();
-
-        document.body.classList.add("flashBackground");
-
-        specialMessage.innerHTML = `
-            <img src="images/lastone.png" class="lastImage">
-            <h1>👑</h1>
-            <h2>ラストワン賞！！</h2>
-            <p>CONGRATULATIONS!</p>
-        `;
-
-        specialEffect.classList.remove("hidden");
-
-        setTimeout(function(){
-
-            specialEffect.classList.add("hidden");
-            document.body.classList.remove("flashBackground");
-
-        },4000);
-
-    }
 
 });
 
@@ -568,21 +574,11 @@ function drawTenTimes(){
 
 let prize;
 
-if(tickets.length===1){
+const randomIndex = Math.floor(Math.random() * tickets.length);
 
-    prize=tickets[0];
+prize = tickets[randomIndex];
 
-    tickets.splice(0,1);
-
-}else{
-
-    const randomIndex=Math.floor(Math.random()*tickets.length);
-
-    prize=tickets[randomIndex];
-
-    tickets.splice(randomIndex,1);
-
-}
+tickets.splice(randomIndex,1);
 
 
 // 最後の1枚を引いた場合だけラストワン
