@@ -1163,7 +1163,7 @@ body.dark #modal h2{
 @media screen and (max-width:600px){
 
     .resultCard.last{
-        margin-bottom:300px;
+        margin-bottom:800px;
     }
 
 }
