@@ -1072,7 +1072,7 @@ body.dark #modal h2{
 }
 
 .summary{
-    transform:translateX(-10px);
+    transform:translateX(-20px);
 }
 
 /* 10回引きリザルトボタンだけ右へ移動 */
