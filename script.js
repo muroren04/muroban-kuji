@@ -51,27 +51,27 @@ function updatePrizeCount(){
 <br>
 
 🟦 B賞　残り ${tickets.filter(ticket=>ticket==="B賞").length}個
-(${((tickets.filter(ticket=>ticket==="B賞").length / tickets.length) * 100).toFixed(1)}%)
+(${((tickets.filter(ticket=>ticket==="B賞").length/ total) * 100).toFixed(1)}%)
 
 <br>
 
 🟩 C賞　残り ${tickets.filter(ticket=>ticket==="C賞").length}個
-(${((tickets.filter(ticket=>ticket==="C賞").length / tickets.length) * 100).toFixed(1)}%)
+(${((tickets.filter(ticket=>ticket==="C賞").length/ total) * 100).toFixed(1)}%)
 
 <br>
 
 🟪 D賞　残り ${tickets.filter(ticket=>ticket==="D賞").length}個
-(${((tickets.filter(ticket=>ticket==="D賞").length / tickets.length) * 100).toFixed(1)}%)
+(${((tickets.filter(ticket=>ticket==="D賞").length/ total) * 100).toFixed(1)}%)
 
 <br>
 
 🟧 E賞　残り ${tickets.filter(ticket=>ticket==="E賞").length}個
-(${((tickets.filter(ticket=>ticket==="E賞").length / tickets.length) * 100).toFixed(1)}%)
+(${((tickets.filter(ticket=>ticket==="E賞").length / total) * 100).toFixed(1)}%)
 
 <br>
 
 ⬜ F賞　残り ${tickets.filter(ticket=>ticket==="F賞").length}個
-(${((tickets.filter(ticket=>ticket==="F賞").length / tickets.length) * 100).toFixed(1)}%)
+(${((tickets.filter(ticket=>ticket==="F賞").length / total) * 100).toFixed(1)}%)
 
 `;
 
@@ -373,36 +373,37 @@ if(prize==="A賞"){
 
 }
 
-if(isLastDraw){
+if (isLastDraw) {
 
-    lastoneSound.currentTime=0;
-    lastoneSound.play();
+    setTimeout(function () {
 
-    createConfetti();
+        lastoneSound.currentTime = 0;
+        lastoneSound.play();
 
-    document.body.classList.add("flashBackground");
+        createConfetti();
 
-specialMessage.innerHTML=`
+        document.body.classList.add("flashBackground");
 
-    <img src="images/lastone.png" class="lastImage">
+        specialMessage.innerHTML = `
+            <img src="images/lastone.png" class="lastImage">
 
-    <h1>👑</h1>
+            <h1>👑</h1>
 
-    <h2>ラストワン賞！！</h2>
+            <h2>ラストワン賞！！</h2>
 
-    <p>CONGRATULATIONS!</p>
+            <p>CONGRATULATIONS!</p>
+        `;
 
-`;
+        specialEffect.classList.remove("hidden");
 
-    specialEffect.classList.remove("hidden");
+        setTimeout(function () {
 
-    setTimeout(function(){
+            specialEffect.classList.add("hidden");
+            document.body.classList.remove("flashBackground");
 
-        specialEffect.classList.add("hidden");
-        document.body.classList.remove("flashBackground");
+        }, 4000);
 
-    },4000);
-
+    }, 1500);  
 }
 
 drawHistory.unshift(`${drawCount}回目　${prize}　${data.name}`);
