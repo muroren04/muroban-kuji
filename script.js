@@ -568,11 +568,21 @@ function drawTenTimes(){
 
 let prize;
 
-const randomIndex = Math.floor(Math.random() * tickets.length);
+if(tickets.length===1){
 
-prize = tickets[randomIndex];
+    prize=tickets[0];
 
-tickets.splice(randomIndex,1);
+    tickets.splice(0,1);
+
+}else{
+
+    const randomIndex=Math.floor(Math.random()*tickets.length);
+
+    prize=tickets[randomIndex];
+
+    tickets.splice(randomIndex,1);
+
+}
 
 
 // 最後の1枚を引いた場合だけラストワン
