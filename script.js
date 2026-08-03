@@ -33,6 +33,9 @@ const clickSound = new Audio("sounds/click.mp3");
 
 const shakeSound = new Audio("sounds/shake.mp3");
 
+shakeSound.loop = true;
+shakeSound.volume = 1.0;
+
 const openSound = new Audio("sounds/open.mp3");
 
 const rareSound = new Audio("sounds/rare.mp3");
@@ -222,7 +225,11 @@ drawCount++;
 box.classList.add("shake");
 
 shakeSound.currentTime = 0;
-shakeSound.play();
+shakeSound.loop = true;
+
+shakeSound.play().catch(function(error){
+    console.log("shake音エラー:", error);
+});
 
     result.textContent = "抽選中...";
 
@@ -236,6 +243,7 @@ box.classList.add("flash");
 box.src="images/box-open.png";
 
 shakeSound.pause();
+shakeSound.currentTime = 0;
 
 openSound.currentTime = 0;
 openSound.play();
@@ -530,7 +538,11 @@ function drawTenTimes(){
     clickSound.play();
 
     shakeSound.currentTime = 0;
-    shakeSound.play();
+shakeSound.loop = true;
+
+shakeSound.play().catch(function(error){
+    console.log("shake音エラー:", error);
+});
 
     result.textContent = "10回抽選中...";
 
@@ -547,6 +559,7 @@ function drawTenTimes(){
         box.src="images/box-open.png";
 
         shakeSound.pause();
+shakeSound.currentTime = 0;
 
         openSound.currentTime = 0;
         openSound.play();
