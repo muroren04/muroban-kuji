@@ -160,6 +160,8 @@ const prizeData = {
 
 let tickets = [];
 
+let lastOneAvailable = true;
+
 let drawHistory = [];
 
 let drawCount = 0;
@@ -366,39 +368,6 @@ if(prize==="A賞"){
 
     },2500);
 
-}
-
-if (isLastDraw) {
-
-    setTimeout(function () {
-
-        lastoneSound.currentTime = 0;
-        lastoneSound.play();
-
-        createConfetti();
-
-        document.body.classList.add("flashBackground");
-
-        specialMessage.innerHTML = `
-            <img src="images/lastone.png" class="lastImage">
-
-            <h1>👑</h1>
-
-            <h2>ラストワン賞！！</h2>
-
-            <p>CONGRATULATIONS!</p>
-        `;
-
-        specialEffect.classList.remove("hidden");
-
-        setTimeout(function () {
-
-            specialEffect.classList.add("hidden");
-            document.body.classList.remove("flashBackground");
-
-        }, 4000);
-
-    }, 1500);  
 }
 
 drawHistory.unshift(`${drawCount}回目　${prize}　${data.name}`);
