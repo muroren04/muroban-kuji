@@ -1006,15 +1006,9 @@ body.dark #modal h2{
 .resultButtons{
     display:flex;
     flex-direction:column;
-    align-items:center;   /* ← 追加 */
+    align-items:center;
     gap:12px;
     margin-top:20px;
-}
-
-.resultButtons button{
-
-    width:100%;
-
 }
 
 .resultButtons button{
@@ -1065,26 +1059,29 @@ body.dark #modal h2{
     outline:none !important;
     background:none !important;
 }
-
-/* 10回引きリザルトを右へ移動 */
-.tenGrid{
-    transform:translateX(0px);
-}
+/* ===== 10回引き レイアウト ===== */
 
 .summary{
-    transform:translateX(10px);
-}
-
-/* 10回引きリザルトボタンだけ右へ移動 */
-.resultButtons{
-    transform:translateX(70px);
+    width:180px;
+    margin:20px auto 0;
 }
 
 .summary div{
-    display:grid !important;
-    grid-template-columns:120px 50px !important;
-    justify-content:start !important;
-    text-align:left !important;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.resultButtons{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+    margin-top:20px;
+}
+
+.resultButtons button{
+    width:250px;
 }
 
 /* =========================
@@ -1152,25 +1149,21 @@ body.dark #modal h2{
 
 }
 
-@media screen and (max-width:600px){
+@media (max-width:600px){
 
-    .summary{
-        transform:translateX(-20px);
+    .tenGrid{
+        grid-template-columns:repeat(2,90px);
+        justify-content:center;
+        gap:10px;
     }
 
-}
-
-@media screen and (max-width:600px){
-
-    .resultCard.last{
-        margin-bottom:800px;
+    .summary{
+        width:180px;
+        margin:20px auto 0;
     }
 
-}
-@media screen and (max-width:600px){
-
-    .summary{
-        margin-top:40px;
+    .resultButtons{
+        align-items:center;
     }
 
 }
